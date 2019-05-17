@@ -7,11 +7,15 @@ namespace conSpektas.Domain
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Conspect> Conspects { get; set; }
-        public DbSet<ConspectRating> ConspectRatings { get; set; }
+        public DbSet<ConspectRating> ConspectsRatings { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<CommentRating> CommentRatings { get; set; }
+        public DbSet<CommentRating> CommentsRatings { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ConspectCategory> ConspectsCategories { get; set; }
+
+        public ConspectContext(DbContextOptions<ConspectContext> options)
+            : base(options)
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,13 +36,17 @@ namespace conSpektas.Domain
             modelBuilder.Entity<ConspectCategory>()
                 .HasKey(category => new { category.CategoryId, category.ConspectId });
 
+            modelBuilder.Entity<Comment>()
+                .HasOne(comment => comment.User)
+                .WithMany(user => user.Comments).OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<Conspect>()
                 .HasOne(conspect => conspect.Parent)
                 .WithOne().OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Conspect>()
                 .HasOne(conspect => conspect.User)
-                .WithMany().OnDelete(DeleteBehavior.Restrict);
+                .WithMany(user => user.Conspects).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
