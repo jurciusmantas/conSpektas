@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace conSpektas.Domain.Migrations
+namespace conSpektas.Data.Migrations
 {
     public partial class InitialMigration : Migration
     {

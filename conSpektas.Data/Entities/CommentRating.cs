@@ -1,4 +1,4 @@
-﻿namespace conSpektas.Domain.Entities
+﻿namespace conSpektas.Data.Entities
 {
     public class CommentRating
     {

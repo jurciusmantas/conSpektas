@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\conSpektas.Domain\conSpektas.Domain.csproj" />
+    <ProjectReference Include="..\conSpektas.Data\conSpektas.Data.csproj" />
   </ItemGroup>
 
 </Project>

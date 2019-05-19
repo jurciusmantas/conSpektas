@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace conSpektas.Domain.Entities
+namespace conSpektas.Data.Entities
 {
     public class Category
     {

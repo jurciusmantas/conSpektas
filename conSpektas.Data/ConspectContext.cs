@@ -1,7 +1,7 @@
-﻿using conSpektas.Domain.Entities;
+﻿using conSpektas.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace conSpektas.Domain
+namespace conSpektas.Data
 {
     public class ConspectContext : DbContext
     {
