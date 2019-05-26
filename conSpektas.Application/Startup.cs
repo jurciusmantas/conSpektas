@@ -1,18 +1,17 @@
 ﻿using conSpektas.Data;
+using conSpektas.Data.Repositories.Register;
+using conSpektas.Data.Services.Register;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SimpleInjector;
 
 namespace conSpektas.Application
 {
     public class Startup
     {
-        private Container _container = new Container();
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,14 +26,8 @@ namespace conSpektas.Application
 
             services.AddDbContext<ConspectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConSpektasConnection")));
 
-            services.AddSimpleInjector(_container, options =>
-            {
-                options.AddAspNetCore()
-                    .AddControllerActivation()
-                    .AddViewComponentActivation()
-                    .AddPageModelActivation()
-                    .AddTagHelperActivation();
-            });
+            services.AddScoped<IRegisterService, RegisterService>();
+            services.AddScoped<IRegisterRepository, RegisterRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,18 +38,7 @@ namespace conSpektas.Application
                 app.UseDeveloperExceptionPage();
             }
 
-            InitializeContainer();
-            _container.Verify();
-
             app.UseMvc();
-        }
-
-        private void InitializeContainer()
-        {
-            // register services from here if needed
-
-            // registration from conSpektas.Data
-            ObjectContainer.Initialize(_container);
         }
     }
 }
