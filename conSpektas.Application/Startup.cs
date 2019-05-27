@@ -1,4 +1,6 @@
-﻿using conSpektas.Data;
+﻿using conSpecktas.Model.Repositories.Conspects;
+using conSpecktas.Model.Services.Conspects;
+using conSpektas.Data;
 using conSpektas.Model.Repositories.Comment;
 using conSpektas.Model.Repositories.Login;
 using conSpektas.Model.Repositories.Register;
@@ -40,6 +42,8 @@ namespace conSpektas.Application
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IConspectsService, ConspectsService>();
+            services.AddScoped<IConspectsRepository, ConspectsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

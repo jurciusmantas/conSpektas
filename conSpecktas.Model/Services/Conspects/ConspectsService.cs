@@ -1,4 +1,5 @@
 ﻿using conSpecktas.Model.Repositories.Conspects;
+using conSpektas.Data.DTOs;
 
 namespace conSpecktas.Model.Services.Conspects
 {
@@ -13,6 +14,11 @@ namespace conSpecktas.Model.Services.Conspects
         public conSpektas.Data.Entities.Conspect GetById(int id)
         {
             return _repository.GetById(id);
+        }
+
+        public ServerResult UploadConspect(UploadConspectArgs args)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

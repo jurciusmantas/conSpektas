@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using conSpektas.Data;
 
 namespace conSpektas.Data.Migrations
 {
     [DbContext(typeof(ConspectContext))]
-    partial class ConspectContextModelSnapshot : ModelSnapshot
+    [Migration("20190527225041_conspect_context_remove")]
+    partial class conspect_context_remove
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,10 +80,7 @@ namespace conSpektas.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("Content")
-                        .IsRequired();
-
-                    b.Property<DateTime>("Inserted");
+                    b.Property<DateTime>("LatestEditDate");
 
                     b.Property<int?>("ParentId");
 
