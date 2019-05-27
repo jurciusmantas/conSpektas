@@ -1,8 +1,9 @@
-﻿using conSpektas.Data.DTOs;
+﻿using conSpektas.Data;
+using conSpektas.Data.DTOs;
 using conSpektas.Data.Entities;
 using System.Linq;
 
-namespace conSpektas.Data.Repositories.Login
+namespace conSpektas.Model.Repositories.Login
 {
     public class LoginRepository : ILoginRepository
     {
@@ -15,9 +16,7 @@ namespace conSpektas.Data.Repositories.Login
 
         public User GetUserByLogin(LoginArgs args)
         {
-            return _context.Users
-                .Where(u => u.UserName == args.UserName && u.PasswordHash == args.PasswordHash)
-                .First();
+            return _context.Users.Single(u => u.UserName == args.UserName && u.PasswordHash == args.PasswordHash);
         }
     }
 }

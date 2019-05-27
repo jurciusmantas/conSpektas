@@ -1,6 +1,6 @@
 ﻿using conSpektas.Data.DTOs;
 
-namespace conSpektas.Data.Services.Register
+namespace conSpektas.Model.Services.Register
 {
     public interface IRegisterService
     {

@@ -1,6 +1,5 @@
-﻿using conSpektas.Data;
-using conSpektas.Data.DTOs;
-using conSpektas.Data.Services.Comments;
+﻿using conSpektas.Data.DTOs;
+using conSpektas.Model.Services.Comments;
 using Microsoft.AspNetCore.Mvc;
 
 namespace conSpektas.Application.Controllers

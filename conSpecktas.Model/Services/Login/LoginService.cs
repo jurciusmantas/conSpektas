@@ -1,9 +1,9 @@
 ﻿using conSpektas.Data.DTOs;
 using conSpektas.Data.Entities;
-using conSpektas.Data.Repositories.Login;
+using conSpektas.Model.Repositories.Login;
 using System;
 
-namespace conSpektas.Data.Services.Login
+namespace conSpektas.Model.Services.Login
 {
     public class LoginService : ILoginService
     {

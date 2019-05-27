@@ -1,9 +1,9 @@
 ﻿using conSpektas.Data;
-using conSpektas.Data.Repositories.Login;
-using conSpektas.Data.Repositories.Register;
-using conSpektas.Data.Services.Comments;
-using conSpektas.Data.Services.Login;
-using conSpektas.Data.Services.Register;
+using conSpektas.Model.Repositories.Login;
+using conSpektas.Model.Repositories.Register;
+using conSpektas.Model.Services.Comments;
+using conSpektas.Model.Services.Login;
+using conSpektas.Model.Services.Register;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

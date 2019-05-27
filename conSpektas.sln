@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "conSpektas.Application", "c
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "conSpektas.Data", "conSpektas.Data\conSpektas.Data.csproj", "{339F05AA-CF12-4CCD-A4AE-2E4A7DF30FC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conSpecktas.Model", "conSpecktas.Model\conSpecktas.Model.csproj", "{2D044D80-116B-4BD7-B19C-DCD1B3522169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{339F05AA-CF12-4CCD-A4AE-2E4A7DF30FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{339F05AA-CF12-4CCD-A4AE-2E4A7DF30FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{339F05AA-CF12-4CCD-A4AE-2E4A7DF30FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D044D80-116B-4BD7-B19C-DCD1B3522169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D044D80-116B-4BD7-B19C-DCD1B3522169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D044D80-116B-4BD7-B19C-DCD1B3522169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D044D80-116B-4BD7-B19C-DCD1B3522169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

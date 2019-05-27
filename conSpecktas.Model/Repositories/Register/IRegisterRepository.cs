@@ -1,6 +1,6 @@
 ﻿using conSpektas.Data.Entities;
 
-namespace conSpektas.Data.Repositories.Register
+namespace conSpektas.Model.Repositories.Register
 {
     public interface IRegisterRepository
     {

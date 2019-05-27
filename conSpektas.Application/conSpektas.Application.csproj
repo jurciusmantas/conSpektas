@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\conSpecktas.Model\conSpecktas.Model.csproj" />
     <ProjectReference Include="..\conSpektas.Data\conSpektas.Data.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,6 @@
-﻿namespace conSpektas.Data.Repositories.Comment
+﻿using conSpektas.Data;
+
+namespace conSpektas.Model.Repositories.Comment
 {
     public class CommentRepository : ICommentRepository
     {
@@ -9,7 +11,7 @@
             _context = context;
         }
 
-        public void AddCommentToConspect(Entities.Comment comment)
+        public void AddCommentToConspect(Data.Entities.Comment comment)
         {
             _context.Comments.Add(comment);
         }

@@ -1,7 +1,7 @@
 ﻿using conSpektas.Data.Entities;
-using conSpektas.Data.Repositories.Users;
+using conSpektas.Model.Repositories.Users;
 
-namespace conSpektas.Data.Services.Users
+namespace conSpektas.Model.Services.Users
 {
     public class UsersService : IUsersService
     {

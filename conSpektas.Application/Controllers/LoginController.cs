@@ -1,7 +1,6 @@
-﻿using conSpektas.Data;
-using conSpektas.Data.DTOs;
+﻿using conSpektas.Data.DTOs;
 using conSpektas.Data.Entities;
-using conSpektas.Data.Services.Login;
+using conSpektas.Model.Services.Login;
 using Microsoft.AspNetCore.Mvc;
 
 namespace conSpektas.Application.Controllers

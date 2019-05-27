@@ -1,6 +1,6 @@
 ﻿using conSpektas.Data.DTOs;
 
-namespace conSpektas.Data.Services.Comments
+namespace conSpektas.Model.Services.Comments
 {
     public interface ICommentService
     {

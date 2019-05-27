@@ -1,9 +1,9 @@
 ﻿using conSpektas.Data.DTOs;
 using conSpektas.Data.Entities;
-using conSpektas.Data.Repositories.Register;
+using conSpektas.Model.Repositories.Register;
 using System;
 
-namespace conSpektas.Data.Services.Register
+namespace conSpektas.Model.Services.Register
 {
     public class RegisterService : IRegisterService
     {

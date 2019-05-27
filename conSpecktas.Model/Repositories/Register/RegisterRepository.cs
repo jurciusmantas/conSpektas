@@ -1,6 +1,7 @@
-﻿using conSpektas.Data.Entities;
+﻿using conSpektas.Data;
+using conSpektas.Data.Entities;
 
-namespace conSpektas.Data.Repositories.Register
+namespace conSpektas.Model.Repositories.Register
 {
     public class RegisterRepository : IRegisterRepository
     {

@@ -1,9 +1,9 @@
-﻿using conSpektas.Data.DTOs;
-using conSpektas.Data.Repositories.Comment;
-using conSpektas.Data.Services.Users;
+﻿using conSpektas.Model.Repositories.Comment;
+using conSpektas.Model.Services.Users;
 using System;
+using conSpektas.Data.DTOs;
 
-namespace conSpektas.Data.Services.Comments
+namespace conSpektas.Model.Services.Comments
 {
     public class CommentService : ICommentService
     {
@@ -50,7 +50,7 @@ namespace conSpektas.Data.Services.Comments
                         Message = "UserId required"
                     };
 
-                _repository.AddCommentToConspect(new Entities.Comment
+                _repository.AddCommentToConspect(new Data.Entities.Comment
                 {
                     UserId = user.Id,
                     ConspectId = args.ConspectId, // veliau var conspect = _conspectService;

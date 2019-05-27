@@ -1,6 +1,6 @@
 ﻿using conSpektas.Data.Entities;
 
-namespace conSpektas.Data.Repositories.Users
+namespace conSpektas.Model.Repositories.Users
 {
     public interface IUsersRepository
     {

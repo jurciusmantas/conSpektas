@@ -1,7 +1,8 @@
-﻿using conSpektas.Data.Entities;
+﻿using conSpektas.Data;
+using conSpektas.Data.Entities;
 using System.Linq;
 
-namespace conSpektas.Data.Repositories.Users
+namespace conSpektas.Model.Repositories.Users
 {
     public class UsersRepository : IUsersRepository
     {

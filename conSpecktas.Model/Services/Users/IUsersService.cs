@@ -1,6 +1,6 @@
 ﻿using conSpektas.Data.Entities;
 
-namespace conSpektas.Data.Services.Users
+namespace conSpektas.Model.Services.Users
 {
     public interface IUsersService
     {

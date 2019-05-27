@@ -1,4 +1,4 @@
-﻿namespace conSpektas.Data
+﻿namespace conSpektas.Data.DTOs
 {
     public class ServerResult
     {

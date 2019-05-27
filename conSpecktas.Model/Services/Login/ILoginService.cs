@@ -1,7 +1,7 @@
 ﻿using conSpektas.Data.DTOs;
 using conSpektas.Data.Entities;
 
-namespace conSpektas.Data.Services.Login
+namespace conSpektas.Model.Services.Login
 {
     public interface ILoginService
     {
