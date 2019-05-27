@@ -2,6 +2,7 @@
 using conSpektas.Model.Services.Users;
 using System;
 using conSpektas.Data.DTOs;
+using conSpecktas.Model.Services.Conspects;
 
 namespace conSpektas.Model.Services.Comments
 {
@@ -9,12 +10,15 @@ namespace conSpektas.Model.Services.Comments
     {
         private readonly IUsersService _usersService;
         private readonly ICommentRepository _repository;
+        private readonly IConspectsService _conspectsService;
 
         public CommentService(ICommentRepository repository
-            , IUsersService usersService)
+            , IUsersService usersService
+            , IConspectsService conspectsService)
         {
             _repository = repository;
             _usersService = usersService;
+            _conspectsService = conspectsService;
         }
 
         public ServerResult AddCommentToConspect(AddCommentToConspectArgs args)
@@ -43,6 +47,14 @@ namespace conSpektas.Model.Services.Comments
                         Message = "ConspectId required"
                     };
 
+                var conspect = _conspectsService.GetById(args.ConspectId);
+                if (conspect == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = $"Conspect with id {args.ConspectId} not found"
+                    };
+
                 if (string.IsNullOrWhiteSpace(args.Content))
                     return new ServerResult
                     {
@@ -53,7 +65,7 @@ namespace conSpektas.Model.Services.Comments
                 _repository.AddCommentToConspect(new Data.Entities.Comment
                 {
                     UserId = user.Id,
-                    ConspectId = args.ConspectId, // veliau var conspect = _conspectService;
+                    ConspectId = conspect.Id,
                     Content = args.Content
                 });
 
