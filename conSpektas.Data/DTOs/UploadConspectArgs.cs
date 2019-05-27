@@ -6,5 +6,6 @@
         public int CategoryId { get; set; }
         public string Title { get; set; }
         public byte[] Content { get; set; }
+        public int? ParentId { get; set; }
     }
 }

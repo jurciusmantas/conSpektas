@@ -17,5 +17,12 @@ namespace conSpecktas.Model.Repositories.Conspects
         {
             return _context.Conspects.Single(c => c.Id == id);
         }
+
+        public int UploadConspect(Conspect item)
+        {
+            _context.Conspects.Add(item);
+            _context.SaveChanges();
+            return item.Id;
+        }
     }
 }

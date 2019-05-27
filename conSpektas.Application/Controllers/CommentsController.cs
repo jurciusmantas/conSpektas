@@ -15,7 +15,7 @@ namespace conSpektas.Application.Controllers
 
         [HttpPost]
         [Route("add/toconspect")]
-        public ServerResult AddCommentToConspect(AddCommentToConspectArgs args)
+        public ServerResult AddCommentToConspect([FromBody] AddCommentToConspectArgs args)
         {
             return _service.AddCommentToConspect(args);
         }
