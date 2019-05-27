@@ -1,6 +1,7 @@
 ﻿using conSpektas.Data;
 using conSpektas.Data.Repositories.Login;
 using conSpektas.Data.Repositories.Register;
+using conSpektas.Data.Services.Comments;
 using conSpektas.Data.Services.Login;
 using conSpektas.Data.Services.Register;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +33,7 @@ namespace conSpektas.Application
             services.AddScoped<IRegisterRepository, RegisterRepository>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<ICommentService, CommentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
