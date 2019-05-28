@@ -29,6 +29,13 @@ namespace conSpecktas.Model.Services.Conspects
         {
             try
             {
+                if (args == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Failed to get argument object"
+                    };
+
                 if (args.UserId == 0)
                     return new ServerResult
                     {

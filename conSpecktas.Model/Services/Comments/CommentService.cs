@@ -25,6 +25,13 @@ namespace conSpektas.Model.Services.Comments
         {
             try
             {
+                if (args == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Failed to get argument object"
+                    };
+
                 if (args.UserId == 0)
                     return new ServerResult
                     {

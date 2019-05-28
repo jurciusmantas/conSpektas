@@ -18,6 +18,13 @@ namespace conSpektas.Model.Services.Login
         {
             try
             {
+                if (args == null)
+                    return new ServerResult<User>
+                    {
+                        Success = false,
+                        Message = "Failed to get argument object"
+                    };
+
                 if (string.IsNullOrWhiteSpace(args.UserName))
                     return new ServerResult<User>
                     {
