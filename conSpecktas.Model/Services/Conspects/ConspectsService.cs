@@ -1,8 +1,10 @@
 ﻿using conSpecktas.Model.Repositories.Conspects;
 using conSpecktas.Model.Services.Categories;
 using conSpektas.Data.DTOs;
+using conSpektas.Data.Entities;
 using conSpektas.Model.Services.Users;
 using System;
+using System.Collections.Generic;
 
 namespace conSpecktas.Model.Services.Conspects
 {
@@ -97,6 +99,7 @@ namespace conSpecktas.Model.Services.Conspects
                     Title = args.Title,
                     ParentId = args.ParentId,
                     Content = args.Content,
+                    Inserted = DateTime.Now
                 });
 
                 _categoriesService.Insert(new conSpektas.Data.Entities.ConspectCategory
@@ -110,6 +113,33 @@ namespace conSpecktas.Model.Services.Conspects
             catch (Exception exc)
             {
                 return new ServerResult
+                {
+                    Success = false,
+                    Message = exc.Message
+                };
+            }
+        }
+
+        public ServerResult<List<Conspect>> GetListPaged(GetConspectsListPagedArgs args)
+        {
+            try
+            {
+                if (args.PageSize == 0 && args.PageNumber == 0)
+                    return new ServerResult<List<Conspect>>
+                    {
+                        Success = false,
+                        Message = "Both page number and page size is 0"
+                    };
+
+                return new ServerResult<List<Conspect>>
+                {
+                    Success = true,
+                    Data = _repository.GetConspectsList(args),
+                };
+            }
+            catch (Exception exc)
+            {
+                return new ServerResult<List<Conspect>>
                 {
                     Success = false,
                     Message = exc.Message
