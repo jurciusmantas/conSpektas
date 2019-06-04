@@ -30,5 +30,12 @@ namespace conSpektas.Application.Controllers
         {
             return _service.GetListPaged(args);
         }
+
+        [HttpGet]
+        [Route("delete/{conspectId}")]
+        public ServerResult DeleteConspect(int conspectId)
+        {
+            return _service.DeleteConspect(conspectId);
+        }
     }
 }

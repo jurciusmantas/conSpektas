@@ -52,5 +52,10 @@ namespace conSpecktas.Model.Repositories.Conspects
                 .Take(args.PageSize)
                 .ToList();
         }
+
+        public void DeleteConspect(int conspectId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace conSpecktas.Model.Services.Conspects
             _categoriesService = categoriesService;
         }
 
-        public conSpektas.Data.Entities.Conspect GetById(int id)
+        public Conspect GetById(int id)
         {
             return _repository.GetById(id);
         }
@@ -140,6 +140,23 @@ namespace conSpecktas.Model.Services.Conspects
             catch (Exception exc)
             {
                 return new ServerResult<List<Conspect>>
+                {
+                    Success = false,
+                    Message = exc.Message
+                };
+            }
+        }
+
+        public ServerResult DeleteConspect(int conspectId)
+        {
+            try
+            {
+                _repository.DeleteConspect(conspectId);
+                return new ServerResult { Success = true };
+            }
+            catch (Exception exc)
+            {
+                return new ServerResult
                 {
                     Success = false,
                     Message = exc.Message
