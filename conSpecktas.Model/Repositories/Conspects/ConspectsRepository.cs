@@ -1,7 +1,6 @@
 ﻿using conSpektas.Data;
 using conSpektas.Data.DTOs;
 using conSpektas.Data.Entities;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -55,7 +54,10 @@ namespace conSpecktas.Model.Repositories.Conspects
 
         public void DeleteConspect(int conspectId)
         {
-            throw new System.NotImplementedException();
+            var item = new Conspect { Id = conspectId };
+            _context.Conspects.Attach(item);
+            _context.Conspects.Remove(item);
+            _context.SaveChanges();
         }
     }
 }

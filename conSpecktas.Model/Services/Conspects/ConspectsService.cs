@@ -1,5 +1,6 @@
 ﻿using conSpecktas.Model.Repositories.Conspects;
 using conSpecktas.Model.Services.Categories;
+using conSpecktas.Model.Services.Ratings;
 using conSpektas.Data.DTOs;
 using conSpektas.Data.Entities;
 using conSpektas.Model.Services.Users;
@@ -13,13 +14,19 @@ namespace conSpecktas.Model.Services.Conspects
         private readonly IConspectsRepository _repository;
         private readonly IUsersService _usersService;
         private readonly ICategoriesService _categoriesService;
+        private readonly IRatingsService _ratingsService;
+        private readonly IDeleteService _deleteService;
         public ConspectsService(IConspectsRepository repository
             , IUsersService usersService
-            , ICategoriesService categoriesService)
+            , ICategoriesService categoriesService
+            , IRatingsService ratingsService
+            , IDeleteService deleteService)
         {
             _repository = repository;
             _usersService = usersService;
             _categoriesService = categoriesService;
+            _ratingsService = ratingsService;
+            _deleteService = deleteService;
         }
 
         public Conspect GetById(int id)
@@ -151,6 +158,28 @@ namespace conSpecktas.Model.Services.Conspects
         {
             try
             {
+                if (conspectId == 0)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Id cannot be 0!",
+                    };
+
+                var conspect = GetById(conspectId);
+                if (conspect == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Conspect not found"
+                    };
+
+                //Delete all info about conspect :
+                //comments (and their ratings aswell), rating, older versions
+                _deleteService.DeleteCommentsFromConspect(conspect);
+                _deleteService.DeleteConspectRatings(conspect.Ratings);
+
+                // older versions
+
                 _repository.DeleteConspect(conspectId);
                 return new ServerResult { Success = true };
             }
