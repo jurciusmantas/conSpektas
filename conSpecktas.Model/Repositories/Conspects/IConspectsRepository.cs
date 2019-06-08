@@ -10,5 +10,6 @@ namespace conSpecktas.Model.Repositories.Conspects
         int UploadConspect(Conspect item);
         List<Conspect> GetConspectsList(GetConspectsListPagedArgs args);
         void DeleteConspect(int conspectId);
+        void UpdateConspect(Conspect conspect);
     }
 }

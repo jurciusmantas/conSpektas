@@ -192,5 +192,59 @@ namespace conSpecktas.Model.Services.Conspects
                 };
             }
         }
+
+        public ServerResult RateConspect(RateConspectArgs args)
+        {
+            try
+            {
+                if (args == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Argument object is null"
+                    };
+
+                if (args.ConspectId == 0)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Conspect Id cannot be 0"
+                    };
+
+                var conspect = GetById(args.ConspectId);
+                if (conspect == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = $"Conspect with id {args.ConspectId} not found"
+                    };
+
+                if (args.UserId == 0)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "User Id cannot be 0"
+                    };
+
+                _ratingsService.AddRatingToConspect(args.ConspectId, args.UserId, args.Positive);
+
+                if (args.Positive)
+                    conspect.Rating++;
+                else
+                    conspect.Rating--;
+
+                _repository.UpdateConspect(conspect);
+
+                return new ServerResult { Success = true };
+            }
+            catch (Exception exc)
+            {
+                return new ServerResult
+                {
+                    Success = false,
+                    Message = exc.Message,
+                };
+            }
+        }
     }
 }

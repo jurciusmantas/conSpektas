@@ -1,4 +1,5 @@
 ﻿using conSpektas.Data;
+using conSpektas.Data.Entities;
 using System.Linq;
 
 namespace conSpecktas.Model.Repositories.Ratings
@@ -10,6 +11,12 @@ namespace conSpecktas.Model.Repositories.Ratings
         public RatingsRepository(ConspectContext context)
         {
             _context = context;
+        }
+
+        public void InsertConspectRating(ConspectRating conspectRating)
+        {
+            _context.ConspectsRatings.Add(conspectRating);
+            _context.SaveChanges();
         }
     }
 }

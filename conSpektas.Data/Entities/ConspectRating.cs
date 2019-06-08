@@ -6,6 +6,6 @@
         public User User { get; set; }
         public int ConspectId { get; set; }
         public Conspect Conspect { get; set; }
-        public int Value { get; set; }
+        public bool Positive { get; set; }
     }
 }

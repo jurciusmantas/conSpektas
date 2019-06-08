@@ -14,6 +14,7 @@ namespace conSpektas.Data.Entities
         [MinLength(1)]
         [MaxLength(255)]
         public string Content { get; set; }
+        public int Rating { get; set; }
         public ICollection<CommentRating> Ratings { get; set; }
     }
 }

@@ -37,5 +37,12 @@ namespace conSpektas.Application.Controllers
         {
             return _service.DeleteConspect(conspectId);
         }
+
+        [HttpPost]
+        [Route("rate")]
+        public ServerResult AddRatingToConspect([FromBody] RateConspectArgs args)
+        {
+            return _service.RateConspect(args);
+        }
     }
 }

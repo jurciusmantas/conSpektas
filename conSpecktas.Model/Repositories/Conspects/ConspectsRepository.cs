@@ -59,5 +59,11 @@ namespace conSpecktas.Model.Repositories.Conspects
             _context.Conspects.Remove(item);
             _context.SaveChanges();
         }
+
+        public void UpdateConspect(Conspect conspect)
+        {
+            _context.Update(conspect);
+            _context.SaveChanges();
+        }
     }
 }

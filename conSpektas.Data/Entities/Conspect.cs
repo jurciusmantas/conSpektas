@@ -18,6 +18,7 @@ namespace conSpektas.Data.Entities
         public int? ParentId { get; set; }
         public Conspect Parent { get; set; }
         public DateTime Inserted { get; set; }
+        public int Rating { get; set; }
         public ICollection<ConspectCategory> Categories { get; set; }
         public ICollection<ConspectRating> Ratings { get; set; }
         public ICollection<Comment> Comments { get; set; }

@@ -17,6 +17,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using conSpecktas.Model.Services.Ratings;
+using conSpecktas.Model.Repositories.Ratings;
+using conSpecktas.Model.Services;
+using conSpecktas.Model.Repositories;
 
 namespace conSpektas.Application
 {
@@ -48,6 +52,10 @@ namespace conSpektas.Application
             services.AddScoped<IConspectsRepository, ConspectsRepository>();
             services.AddScoped<ICategoriesService, CategoriesService>();
             services.AddScoped<ICategoriesRepository, CategoriesRepository>();
+            services.AddScoped<IRatingsService, RatingsService>();
+            services.AddScoped<IRatingsRepository, RatingsRepository>();
+            services.AddScoped<IDeleteService, DeleteService>();
+            services.AddScoped<IDeleteRepository, DeleteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
