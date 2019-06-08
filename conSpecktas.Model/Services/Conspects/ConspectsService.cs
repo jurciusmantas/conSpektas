@@ -225,6 +225,13 @@ namespace conSpecktas.Model.Services.Conspects
                         Success = false,
                         Message = "User Id cannot be 0"
                     };
+                var user = _usersService.GetUserBasic(args.UserId);
+                if (user == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = $"User with id {args.UserId} not found"
+                    };
 
                 _ratingsService.AddRatingToConspect(args.ConspectId, args.UserId, args.Positive);
 

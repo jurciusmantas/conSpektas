@@ -13,6 +13,18 @@ namespace conSpecktas.Model.Services.Ratings
             _repository = repository;
         }
 
+        public void AddRatingToComment(int commentId, int userId, bool positive)
+        {
+            var commentRating = new CommentRating
+            {
+                CommentId = commentId,
+                UserId = userId,
+                Positive = positive,
+            };
+
+            _repository.InsertCommentRating(commentRating);
+        }
+
         public void AddRatingToConspect(int conspectId, int userId, bool positive)
         {
             var conspectRating = new ConspectRating

@@ -15,7 +15,7 @@ namespace conSpektas.Model.Repositories.Users
 
         public User GetUserById(int id)
         {
-            return _context.Users.Single(u => u.Id == id);
+            return _context.Users.SingleOrDefault(u => u.Id == id);
         }
     }
 }

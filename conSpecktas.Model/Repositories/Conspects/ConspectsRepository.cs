@@ -17,7 +17,7 @@ namespace conSpecktas.Model.Repositories.Conspects
 
         public Conspect GetById(int id)
         {
-            return _context.Conspects.Single(c => c.Id == id);
+            return _context.Conspects.SingleOrDefault(c => c.Id == id);
         }
 
         public int UploadConspect(Conspect item)

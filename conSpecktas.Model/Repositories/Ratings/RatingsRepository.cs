@@ -13,6 +13,12 @@ namespace conSpecktas.Model.Repositories.Ratings
             _context = context;
         }
 
+        public void InsertCommentRating(CommentRating commentRating)
+        {
+            _context.CommentsRatings.Add(commentRating);
+            _context.SaveChanges();
+        }
+
         public void InsertConspectRating(ConspectRating conspectRating)
         {
             _context.ConspectsRatings.Add(conspectRating);

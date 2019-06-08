@@ -19,5 +19,12 @@ namespace conSpektas.Application.Controllers
         {
             return _service.AddCommentToConspect(args);
         }
+
+        [HttpPost]
+        [Route("rate")]
+        public ServerResult AddRatingComment([FromBody] RateCommentArgs args)
+        {
+            return _service.RateComment(args);
+        }
     }
 }

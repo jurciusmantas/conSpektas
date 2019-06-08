@@ -5,5 +5,6 @@ namespace conSpektas.Model.Services.Comments
     public interface ICommentService
     {
         ServerResult AddCommentToConspect(AddCommentToConspectArgs args);
+        ServerResult RateComment(RateCommentArgs args);
     }
 }

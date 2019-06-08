@@ -3,6 +3,8 @@ using conSpektas.Model.Services.Users;
 using System;
 using conSpektas.Data.DTOs;
 using conSpecktas.Model.Services.Conspects;
+using conSpecktas.Model.Services.Ratings;
+using conSpektas.Data.Entities;
 
 namespace conSpektas.Model.Services.Comments
 {
@@ -11,14 +13,22 @@ namespace conSpektas.Model.Services.Comments
         private readonly IUsersService _usersService;
         private readonly ICommentRepository _repository;
         private readonly IConspectsService _conspectsService;
+        private readonly IRatingsService _ratingsService;
 
         public CommentService(ICommentRepository repository
             , IUsersService usersService
-            , IConspectsService conspectsService)
+            , IConspectsService conspectsService
+            , IRatingsService ratingsService)
         {
             _repository = repository;
             _usersService = usersService;
             _conspectsService = conspectsService;
+            _ratingsService = ratingsService;
+        }
+
+        public Comment GetById(int commentId)
+        {
+            return _repository.GetById(commentId);
         }
 
         public ServerResult AddCommentToConspect(AddCommentToConspectArgs args)
@@ -84,6 +94,68 @@ namespace conSpektas.Model.Services.Comments
                 {
                     Success = false,
                     Message = exc.Message
+                };
+            }
+        }
+
+        public ServerResult RateComment(RateCommentArgs args)
+        {
+            try
+            {
+                if (args == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Argument object is null"
+                    };
+
+                if (args.CommentId == 0)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Conspect Id cannot be 0"
+                    };
+
+                var comment = GetById(args.CommentId);
+                if (comment == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = $"Comment with id {args.CommentId} not found"
+                    };
+
+                if (args.UserId == 0)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "User Id cannot be 0"
+                    };
+
+                var user = _usersService.GetUserBasic(args.UserId);
+                if (user == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = $"User with id {args.UserId} not found"
+                    };
+
+                _ratingsService.AddRatingToComment(args.CommentId, args.UserId, args.Positive);
+
+                if (args.Positive)
+                    comment.Rating++;
+                else
+                    comment.Rating--;
+
+                _repository.UpdateComment(comment);
+
+                return new ServerResult { Success = true };
+            }
+            catch (Exception exc)
+            {
+                return new ServerResult
+                {
+                    Success = false,
+                    Message = exc.Message,
                 };
             }
         }
