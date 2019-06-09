@@ -19,8 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using conSpecktas.Model.Services.Ratings;
 using conSpecktas.Model.Repositories.Ratings;
-using conSpecktas.Model.Services;
-using conSpecktas.Model.Repositories;
+using Newtonsoft.Json;
 
 namespace conSpektas.Application
 {
@@ -36,7 +35,11 @@ namespace conSpektas.Application
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options => {
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                }); ;
 
             services.AddDbContext<ConspectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConSpektasConnection")));
 
@@ -65,6 +68,7 @@ namespace conSpektas.Application
             }
 
             app.UseMvc();
+                
         }
     }
 }

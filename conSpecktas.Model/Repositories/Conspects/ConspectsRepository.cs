@@ -30,7 +30,8 @@ namespace conSpecktas.Model.Repositories.Conspects
 
         public List<Conspect> GetConspectsList(GetConspectsListPagedArgs args)
         {
-            var list = _context.Conspects.AsQueryable();
+            var list = _context.Conspects
+                .AsQueryable();
 
             if (args.UserId.HasValue)
                 list = list.Where(c => c.UserId == args.UserId.Value);
@@ -50,6 +51,21 @@ namespace conSpecktas.Model.Repositories.Conspects
 
             return list.Skip((args.PageNumber - 1) * args.PageNumber)
                 .Take(args.PageSize)
+                .Select(x => new Conspect
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Content = x.Content,
+                    ParentId = x.ParentId,
+                    Inserted = x.Inserted,
+                    Rating = x.Rating,
+                    User = new User
+                    {
+                        FirstName = x.User.FirstName,
+                        LastName = x.User.LastName,
+                        UserName = x.User.UserName,
+                    },
+                })
                 .ToList();
         }
 
