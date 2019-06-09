@@ -1,6 +1,7 @@
 ﻿using conSpektas.Data;
 using conSpektas.Data.DTOs;
 using conSpektas.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -52,11 +53,9 @@ namespace conSpecktas.Model.Repositories.Conspects
                 .ToList();
         }
 
-        public void DeleteConspect(int conspectId)
+        public void DeleteConspect(Conspect conspect)
         {
-            var item = new Conspect { Id = conspectId };
-            _context.Conspects.Attach(item);
-            _context.Conspects.Remove(item);
+            _context.Remove(conspect);
             _context.SaveChanges();
         }
 
@@ -64,6 +63,16 @@ namespace conSpecktas.Model.Repositories.Conspects
         {
             _context.Update(conspect);
             _context.SaveChanges();
+        }
+
+        public Conspect GetByIdFull(int id)
+        {
+            return _context.Conspects
+                .Where(c => c.Id == id)
+                .Include("Categories")
+                .Include("Ratings")
+                .Include("Comments")
+                .SingleOrDefault();
         }
     }
 }

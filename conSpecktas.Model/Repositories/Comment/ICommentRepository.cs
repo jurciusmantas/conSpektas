@@ -7,5 +7,7 @@ namespace conSpektas.Model.Repositories.Comment
         void AddCommentToConspect(Data.Entities.Comment comment);
         Data.Entities.Comment GetById(int commentId);
         void UpdateComment(Data.Entities.Comment comment);
+        Data.Entities.Comment GetByIdFull(int commentId);
+        void DeleteComment(Data.Entities.Comment comment);
     }
 }

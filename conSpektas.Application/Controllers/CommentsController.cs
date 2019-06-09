@@ -26,5 +26,12 @@ namespace conSpektas.Application.Controllers
         {
             return _service.RateComment(args);
         }
+
+        [HttpGet]
+        [Route("delete/{id}")]
+        public ServerResult DeleteComment(int id)
+        {
+            return _service.DeleteComment(id);
+        }
     }
 }

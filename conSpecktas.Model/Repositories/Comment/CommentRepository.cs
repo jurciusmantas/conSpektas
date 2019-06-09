@@ -1,4 +1,6 @@
 ﻿using conSpektas.Data;
+using conSpektas.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace conSpektas.Model.Repositories.Comment
@@ -23,9 +25,23 @@ namespace conSpektas.Model.Repositories.Comment
             return _context.Comments.SingleOrDefault(c => c.Id == commentId);
         }
 
+        public Data.Entities.Comment GetByIdFull(int commentId)
+        {
+            return _context.Comments
+                .Where(c => c.Id == commentId)
+                .Include("Ratings")
+                .FirstOrDefault();
+        }
+
         public void UpdateComment(Data.Entities.Comment comment)
         {
             _context.Update(comment);
+            _context.SaveChanges();
+        }
+
+        public void DeleteComment(Data.Entities.Comment comment)
+        {
+            _context.Comments.Remove(comment);
             _context.SaveChanges();
         }
     }

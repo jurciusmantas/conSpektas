@@ -54,8 +54,6 @@ namespace conSpektas.Application
             services.AddScoped<ICategoriesRepository, CategoriesRepository>();
             services.AddScoped<IRatingsService, RatingsService>();
             services.AddScoped<IRatingsRepository, RatingsRepository>();
-            services.AddScoped<IDeleteService, DeleteService>();
-            services.AddScoped<IDeleteRepository, DeleteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

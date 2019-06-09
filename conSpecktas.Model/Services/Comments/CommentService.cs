@@ -5,6 +5,8 @@ using conSpektas.Data.DTOs;
 using conSpecktas.Model.Services.Conspects;
 using conSpecktas.Model.Services.Ratings;
 using conSpektas.Data.Entities;
+using conSpecktas.Model.Services;
+using System.Linq;
 
 namespace conSpektas.Model.Services.Comments
 {
@@ -29,6 +31,11 @@ namespace conSpektas.Model.Services.Comments
         public Comment GetById(int commentId)
         {
             return _repository.GetById(commentId);
+        }
+
+        public Comment GetByIdFull(int commentId)
+        {
+            return _repository.GetByIdFull(commentId);
         }
 
         public ServerResult AddCommentToConspect(AddCommentToConspectArgs args)
@@ -156,6 +163,39 @@ namespace conSpektas.Model.Services.Comments
                 {
                     Success = false,
                     Message = exc.Message,
+                };
+            }
+        }
+
+        public ServerResult DeleteComment(int id)
+        {
+            try
+            {
+                if (id == 0)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = "Id cannot be 0"
+                    };
+
+                var comment = GetByIdFull(id);
+                if (comment == null)
+                    return new ServerResult
+                    {
+                        Success = false,
+                        Message = $"Comment with id {id} not found"
+                    };
+
+                _repository.DeleteComment(comment);
+
+                return new ServerResult { Success = true };
+            }
+            catch (Exception exc)
+            {
+                return new ServerResult
+                {
+                    Success = false,
+                    Message = exc.Message
                 };
             }
         }

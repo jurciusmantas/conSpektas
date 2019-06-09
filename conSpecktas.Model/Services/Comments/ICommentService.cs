@@ -6,5 +6,6 @@ namespace conSpektas.Model.Services.Comments
     {
         ServerResult AddCommentToConspect(AddCommentToConspectArgs args);
         ServerResult RateComment(RateCommentArgs args);
+        ServerResult DeleteComment(int id);
     }
 }
