@@ -14,7 +14,7 @@ namespace conSpektas.Data.Entities
         [MaxLength(255)]
         public string Title { get; set; }
         [Required]
-        public byte[] Content { get; set; }
+        public string Content { get; set; }
         public int? ParentId { get; set; }
         public Conspect Parent { get; set; }
         public DateTime Inserted { get; set; }
