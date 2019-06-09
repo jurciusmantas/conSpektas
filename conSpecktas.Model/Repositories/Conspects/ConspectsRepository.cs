@@ -65,6 +65,17 @@ namespace conSpecktas.Model.Repositories.Conspects
                         LastName = x.User.LastName,
                         UserName = x.User.UserName,
                     },
+                    Comments = x.Comments.Select(c => new Comment
+                    {
+                        Content = c.Content,
+                        Rating = c.Rating,
+                        User = new User
+                        {
+                            FirstName = c.User.FirstName,
+                            LastName = c.User.LastName,
+                            UserName = c.User.LastName,
+                        }
+                    }).ToList(),
                 })
                 .ToList();
         }

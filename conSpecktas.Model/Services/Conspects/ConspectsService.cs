@@ -140,6 +140,13 @@ namespace conSpecktas.Model.Services.Conspects
                         Message = "Both page number and page size is 0"
                     };
 
+                var list = _repository.GetConspectsList(args);
+
+                foreach(var conspect in list)
+                {
+
+                }
+
                 return new ServerResult<List<Conspect>>
                 {
                     Success = true,
